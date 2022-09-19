@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BannerNav from "../components/BannerNav";
 
 const Default = ({ children }) => {
   return (
@@ -13,6 +14,7 @@ const Default = ({ children }) => {
             <a>Log In</a>
           </Link>
         </nav>
+        <BannerNav />
       </header>
       {children}
       <footer>
