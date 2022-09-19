@@ -27,7 +27,7 @@ const Category = (props) => {
 
 export const getServerSideProps = (context) => {
   const category = {
-    _id: context.id,
+    _id: context.params.id,
     name: "Placeholder Category",
     description: "This is a plaeholder category",
   };
