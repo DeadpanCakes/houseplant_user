@@ -3,16 +3,16 @@ import Link from "next/link";
 const ShopNav = () => {
   return (
     <nav>
-      <Link href="/shop/tropical">
+      <Link href="/shop/categories/tropical">
         <a>Tropical</a>
       </Link>
-      <Link href="/shop/succulent">
+      <Link href="/shop/categories/succulent">
         <a>Succulents</a>
       </Link>
-      <Link href="/shop/tillandsia">
+      <Link href="/shop/categories/tillandsia">
         <a>Tillandsia</a>
       </Link>
-      <Link href="/shop/misc">
+      <Link href="/shop/categories/misc">
         <a>Miscellaneous</a>
       </Link>
     </nav>
