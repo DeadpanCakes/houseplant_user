@@ -3,7 +3,7 @@ import Link from "next/link";
 const ShopNav = () => {
   return (
     <nav>
-      <Link href="/shop/tropicial">
+      <Link href="/shop/tropical">
         <a>Tropical</a>
       </Link>
       <Link href="/shop/succulent">
