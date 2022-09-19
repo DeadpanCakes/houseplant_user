@@ -1,8 +1,10 @@
+import Item404 from "./404";
+
 const Item = (props) => {
   const item = JSON.parse(props.item);
   const { name, description, stock, price, discount, categories, isPublished } =
     item;
-  return (
+  return isPublished ? (
     <>
       <h1>
         <span>
@@ -16,6 +18,8 @@ const Item = (props) => {
         })}
       </ul>
     </>
+  ) : (
+    <Item404 />
   );
 };
 
