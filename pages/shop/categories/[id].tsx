@@ -2,13 +2,13 @@ import { useState } from "react";
 import ProductListing from "../../../components/ProductListing";
 import Sorter from "../../../components/Sorter";
 import FilterControl from "../../../components/FilterControl";
+import { CartContext } from "../../../context/Cart";
 
 const Category = (props) => {
   const category = JSON.parse(props.category);
   const products = JSON.parse(props.products);
   const [sortCritera, setSortCriteria] = useState("default");
   const [desiredTags, setDesiredTags] = useState([]);
-
   const sortHandler = (a, b) => {
     if (sortCritera !== "default") {
       return a[sortCritera] - b[sortCritera];
@@ -43,11 +43,6 @@ const Category = (props) => {
           .map((product) => {
             return <ProductListing key={product._id} product={product} />;
           })}
-      </ul>
-      <ul>
-        {desiredTags.map((t) => (
-          <li>{t.name}</li>
-        ))}
       </ul>
     </>
   );
