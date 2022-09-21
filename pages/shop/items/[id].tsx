@@ -1,4 +1,5 @@
 import Item404 from "./404";
+import AddToCart from "../../../components/AddToCart";
 
 const Item = (props) => {
   const item = JSON.parse(props.item);
@@ -17,6 +18,7 @@ const Item = (props) => {
           return <p key={category._id}>{category.name}</p>;
         })}
       </ul>
+      <AddToCart productID={item._id} />
     </>
   ) : (
     <Item404 />
