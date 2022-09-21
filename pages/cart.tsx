@@ -11,20 +11,24 @@ const Cart = (props) => {
   return (
     <DefaultLayout>
       <ul>
-        {items.map((item) => {
-          return (
-            <li key={item._id}>
-              <h2>
-                <span>
-                  <p>{item.name}</p>
-                  <p>${item.price}</p>
-                </span>
-              </h2>
-            </li>
-          );
-        })}
+        {items.map((item) => (
+          <CartListing item={item} />
+        ))}
       </ul>
     </DefaultLayout>
+  );
+};
+
+const CartListing = ({ item }) => {
+  return (
+    <li key={item._id}>
+      <h2>
+        <span>
+          <p>{item.name}</p>
+          <p>${item.price}</p>
+        </span>
+      </h2>
+    </li>
   );
 };
 
