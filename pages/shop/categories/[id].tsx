@@ -1,4 +1,4 @@
-import Link from "next/link";
+import ProductListing from "../../../components/ProductListing";
 
 const Category = (props) => {
   const category = JSON.parse(props.category);
@@ -8,17 +8,7 @@ const Category = (props) => {
       <h1>{category.name}</h1>
       <ul>
         {products.map((product) => {
-          return (
-            <li key={product._id}>
-              <Link href={`/shop/items/${product._id}`}>
-                <a>
-                  <span>
-                    {product.name} ${product.price}
-                  </span>
-                </a>
-              </Link>
-            </li>
-          );
+          return <ProductListing key={product._id} product={product} />;
         })}
       </ul>
     </>
