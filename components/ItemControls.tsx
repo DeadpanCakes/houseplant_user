@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { CartContext } from "../context/Cart";
 
-const AddToCart = ({ productID }) => {
+export const AddToCart = ({ productID }) => {
   const [quantity, setQuantity] = useState(1);
   const increment = () =>
     setQuantity((prevState) => {
@@ -26,7 +26,7 @@ const AddToCart = ({ productID }) => {
   );
 };
 
-const ItemControls = ({ counter }) => {
+export const ItemControls = ({ counter }) => {
   const { increment, decrement, quantity, setQuantity } = counter;
   return (
     <>
@@ -47,5 +47,3 @@ const ItemControls = ({ counter }) => {
     </>
   );
 };
-
-export default AddToCart;
