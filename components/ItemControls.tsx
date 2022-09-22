@@ -14,11 +14,9 @@ const AddToCart = ({ productID }) => {
   const cart = useContext(CartContext);
   return (
     <>
-      <button onClick={() => console.log(cart)}>Check</button>
       <button
         onClick={() => {
           cart.addItem({ _id: productID, quantity });
-          console.log(cart);
         }}
       >
         Add To Cart
