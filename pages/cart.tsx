@@ -1,18 +1,32 @@
 import { useContext } from "react";
 import { CartContext } from "../context/Cart";
 import DefaultLayout from "../layouts/Default";
+import { ItemControls } from "../components/ItemControls";
 
 const Cart = (props) => {
   const products = JSON.parse(props.products);
   const cart = useContext(CartContext);
-  const items = products.filter((product) => {
-    return cart.items.find((item) => item._id === product._id);
+  const items = cart.items.map((item) => {
+    const product = products.find((product) => item._id === product._id);
+    return { ...product, quantity: item.quantity };
   });
   return (
     <DefaultLayout>
       <ul>
         {items.map((item) => (
-          <CartListing item={item} key={item._id} />
+          <div key={item._id}>
+            <button onClick={() => console.log(item)}>Check</button>
+            <CartListing item={item} key={item._id} />
+            <ItemControls
+              counter={{
+                quantity: item.quantity,
+                setQuantity: (newQuantity) =>
+                  cart.setQuantity(item._id, newQuantity),
+                increment: () => cart.incrementQuantity(item._id),
+                decrement: () => cart.decrementQuantity(item._id),
+              }}
+            />
+          </div>
         ))}
       </ul>
     </DefaultLayout>
