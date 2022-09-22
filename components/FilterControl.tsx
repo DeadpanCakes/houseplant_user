@@ -10,7 +10,7 @@ const FilterControl = ({ tags, changeHandler }) => {
     <ul>
       {tags.map((tag) => {
         return (
-          <li>
+          <li key={tag._id}>
             <span>
               <input
                 id={tag._id}
