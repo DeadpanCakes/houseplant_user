@@ -1,12 +1,13 @@
 import Item404 from "./404";
-import AddToCart from "../../../components/AddToCart";
+import { AddToCart } from "../../../components/ItemControls";
+import DefaultLayout from "../../../layouts/Default";
 
 const Item = (props) => {
   const item = JSON.parse(props.item);
   const { name, description, stock, price, discount, categories, isPublished } =
     item;
   return isPublished ? (
-    <>
+    <DefaultLayout>
       <h1>
         <span>
           {name} ${price}
@@ -19,9 +20,11 @@ const Item = (props) => {
         })}
       </ul>
       <AddToCart productID={item._id} />
-    </>
+    </DefaultLayout>
   ) : (
-    <Item404 />
+    <DefaultLayout>
+      <Item404 />
+    </DefaultLayout>
   );
 };
 
