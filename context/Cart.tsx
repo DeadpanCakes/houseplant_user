@@ -16,8 +16,53 @@ export const CartProvider = ({ children }) => {
       });
     });
   };
+  const setQuantity = (targetID, newQuantity) => {
+    setItems((prevState) => {
+      return prevState.map((item) => {
+        if (item._id !== targetID) {
+          return item;
+        }
+        return { ...item, quantity: newQuantity };
+      });
+    });
+  };
+  const incrementQuantity = (targetID) => {
+    setItems((prevState) => {
+      return prevState.map((item) => {
+        if (item._id !== targetID) {
+          return item;
+        }
+        return {
+          ...item,
+          quantity: item.quantity < 99 ? item.quantity + 1 : item.quantity,
+        };
+      });
+    });
+  };
+  const decrementQuantity = (targetID) => {
+    setItems((prevState) => {
+      return prevState.map((item) => {
+        if (item._id !== targetID) {
+          return item;
+        }
+        return {
+          ...item,
+          quantity: item.quantity > 1 ? item.quantity - 1 : item.quantity,
+        };
+      });
+    });
+  };
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem }}>
+    <CartContext.Provider
+      value={{
+        items,
+        addItem,
+        removeItem,
+        incrementQuantity,
+        decrementQuantity,
+        setQuantity,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
