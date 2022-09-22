@@ -23,6 +23,15 @@ const AddToCart = ({ productID }) => {
       >
         Add To Cart
       </button>
+      <ItemControls counter={{ increment, decrement, quantity, setQuantity }} />
+    </>
+  );
+};
+
+const ItemControls = ({ counter }) => {
+  const { increment, decrement, quantity, setQuantity } = counter;
+  return (
+    <>
       <button onClick={increment}>+</button>
       <button onClick={decrement}>-</button>
       <input
