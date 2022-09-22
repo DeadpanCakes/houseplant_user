@@ -15,7 +15,6 @@ const Cart = (props) => {
       <ul>
         {items.map((item) => (
           <div key={item._id}>
-            <button onClick={() => console.log(item)}>Check</button>
             <CartListing item={item} key={item._id} />
             <ItemControls
               counter={{
@@ -26,6 +25,7 @@ const Cart = (props) => {
                 decrement: () => cart.decrementQuantity(item._id),
               }}
             />
+            <button onClick={() => cart.removeItem(item._id)}>X</button>
           </div>
         ))}
       </ul>
