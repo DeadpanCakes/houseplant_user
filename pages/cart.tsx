@@ -12,7 +12,7 @@ const Cart = (props) => {
     <DefaultLayout>
       <ul>
         {items.map((item) => (
-          <CartListing item={item} />
+          <CartListing item={item} key={item._id} />
         ))}
       </ul>
     </DefaultLayout>
