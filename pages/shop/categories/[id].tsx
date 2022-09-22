@@ -53,8 +53,8 @@ export const getServerSideProps = async (context) => {
     name: "Placeholder Category",
     description: "This is a plaeholder category",
   };
-  const products = await fetch(process.env.DEV_API + "/api/products").then(
-    (res) => res.json()
+  const products = await fetch(process.env.ROOT_API + "/products").then((res) =>
+    res.json()
   );
   return {
     props: {
