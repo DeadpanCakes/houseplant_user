@@ -11,9 +11,7 @@ export const CartProvider = ({ children }) => {
   };
   const removeItem = (targetID) => {
     return setItems((prevState) => {
-      return prevState.filter((item) => {
-        item._id === targetID;
-      });
+      return prevState.filter((item) => item._id !== targetID);
     });
   };
   const setQuantity = (targetID, newQuantity) => {
