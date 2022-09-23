@@ -30,26 +30,11 @@ const Item = (props) => {
 
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
-  const placeholderProduct = {
-    _id: id,
-    name: "Product",
-    description: "This is a placeholder object",
-    stock: 10,
-    price: 10,
-    discount: 25,
-    categories: [
-      {
-        _id: 1,
-        name: "Tropical",
-        description:
-          "Leafy Plants That Can Endure Periods Of Shade; Great Indoor Plants",
-      },
-      { _id: 2, name: "Pink", description: "Plants With Shades Of Pink" },
-    ],
-    isPublished: true,
-  };
+  const { product } = await fetch(
+    process.env.ROOT_API + `/products/${id}`
+  ).then((res) => res.json());
   return {
-    props: { item: JSON.stringify(placeholderProduct) },
+    props: { item: JSON.stringify(product) },
   };
 };
 
