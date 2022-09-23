@@ -10,9 +10,8 @@ const handler = (req, res) => {
 const get = async (req, res) => {
   const DEV_API = process.env.DEV_API;
   const products = await fetch(
-    DEV_API || process.env.PROD_API + "/products"
+    (DEV_API || process.env.PROD_API) + "/products"
   ).then((res) => res.json());
-  console.log(products);
   res.json(products);
 };
 
