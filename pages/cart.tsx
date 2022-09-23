@@ -48,8 +48,8 @@ const CartListing = ({ item }) => {
 };
 
 export const getServerSideProps = async (context) => {
-  const products = await fetch(process.env.ROOT_API + "/products").then((res) =>
-    res.json()
+  const { products } = await fetch(process.env.ROOT_API + "/products").then(
+    (res) => res.json()
   );
   return {
     props: {
