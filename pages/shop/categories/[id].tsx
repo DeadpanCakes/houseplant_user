@@ -5,6 +5,7 @@ import FilterControl from "../../../components/FilterControl";
 
 const Category = (props) => {
   const category = JSON.parse(props.category);
+  const categories = JSON.parse(props.categories);
   const products = JSON.parse(props.products);
   const [sortCritera, setSortCriteria] = useState("default");
   const [desiredTags, setDesiredTags] = useState([]);
@@ -48,17 +49,17 @@ const Category = (props) => {
 };
 
 export const getServerSideProps = async (context) => {
-  const category = {
-    _id: context.params.id,
-    name: "Placeholder Category",
-    description: "This is a plaeholder category",
-  };
+  const { categories } = await fetch(process.env.ROOT_API + "/categories").then(
+    (res) => res.json()
+  );
+  const category = categories.find((cat) => cat._id === context.params.id);
   const { products } = await fetch(process.env.ROOT_API + "/products").then(
     (res) => res.json()
   );
   return {
     props: {
       category: JSON.stringify(category),
+      categories: JSON.stringify(categories),
       products: JSON.stringify(products),
     },
   };
